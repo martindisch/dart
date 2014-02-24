@@ -16,6 +16,8 @@ void main() {
   
   InputElement bHammingCorrect = querySelector("#hammingcorrect");
   bHammingCorrect.onClick.listen((e) => correct());
+  
+  (querySelector("#hammingreset") as InputElement).onClick.listen((e) => cleanup());
 }
 
 void printresize() {
@@ -80,6 +82,12 @@ Element valcheck(int checksum, int mod, String id, int length, String input) {
     ret.style.color = "#CC0000";
   }
   return ret;
+}
+
+void cleanup() {
+  (querySelector("#hammingmessage") as InputElement).value = 1011.toString();
+  (querySelector("#hammingparity") as InputElement).value = "";
+  querySelector("#correctedcode").text = "Corrected code:";
 }
 
 final List<List<int>> circles = [ [0, 1, 3],

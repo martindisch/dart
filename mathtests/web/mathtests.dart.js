@@ -5840,8 +5840,12 @@ var $$ = {};
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t2._target, t2._eventType, W._wrapZone(new F.main_closure2()), t2._useCapture), [H.getTypeArgumentByIndex(t2, 0)])._tryResume$0();
     bHammingCorrect = document.querySelector("#hammingcorrect");
     bHammingCorrect.toString;
-    t1 = H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(bHammingCorrect, t1, false), [null]);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new F.main_closure3()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t2 = H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(bHammingCorrect, t1, false), [null]);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t2._target, t2._eventType, W._wrapZone(new F.main_closure3()), t2._useCapture), [H.getTypeArgumentByIndex(t2, 0)])._tryResume$0();
+    t2 = H.interceptedTypeCast(document.querySelector("#hammingreset"), "$isInputElement");
+    t2.toString;
+    t1 = H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(t2, t1, false), [null]);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new F.main_closure4()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
   }, "call$0", "main$closure", 0, 0, 1],
   printresize: function() {
     var innerwidth, innerheight;
@@ -6013,6 +6017,15 @@ var $$ = {};
     call$1: function(e) {
       var correctedcode = F.getCorrected(J.$add$ns(H.interceptedTypeCast(document.querySelector("#hammingmessage"), "$isInputElement").value, H.interceptedTypeCast(document.querySelector("#hammingparity"), "$isInputElement").value));
       document.querySelector("#correctedcode").textContent = "Corrected code: " + correctedcode;
+      return;
+    }
+  },
+  main_closure4: {
+    "": "Closure:11;",
+    call$1: function(e) {
+      H.interceptedTypeCast(document.querySelector("#hammingmessage"), "$isInputElement").value = C.JSInt_methods.toString$0(1011);
+      H.interceptedTypeCast(document.querySelector("#hammingparity"), "$isInputElement").value = "";
+      document.querySelector("#correctedcode").textContent = "Corrected code:";
       return;
     }
   },
