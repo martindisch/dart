@@ -1,0 +1,40 @@
+
+body {
+  background-color: #F8F8F8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h2 {
+  color: #333;
+  font-size: 30px;
+}
+
+input[type="text"] {
+  padding: 5px 0px 5px 0px;
+  width: 100%;
+  border: 1px solid Silver;
+  background-color: white;
+  font-weight: normal;
+  text-indent: 5px;
+}
+
+#to-do-list li {
+  padding: 5px 0px 5px 0px;
+  border-bottom: 1px solid silver;
+}
+
+#to-do-list li:hover {
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.box {
+  padding: 0px;
+  margin-top: 5px;
+  list-style-position: inside;
+}

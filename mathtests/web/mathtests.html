@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta" />
+    <title>Mathtests</title>
+    <link rel="stylesheet" href="mathtests.css">
+  </head>
+  <body>
+    <h1>Mathtests</h1>
+    
+    <p>Some experiments</p>
+    
+    <div class="container" id="topcontainer">
+      <div class="subcontainer">
+        <h3 class="title">Window info</h3>
+        <p id="innerwidth">Inner width:</p>
+        <p id="innerheight">Inner height:</p>
+      </div>
+      
+      <div class="subcontainer">
+        <h3 class="title">EAN</h3>
+        <input type="text" id="eaninput" value="4007396079005"/>
+        <input type="button" value="Check EAN" id="eancheck"/>
+        <p id="validity">Check EAN</p>
+      </div>
+      
+      <div class="subcontainer">
+        <h3 class="title">ISBN-10</h3>
+        <input type="text" id="isbninput" value="044018293X"/>
+        <input type="button" value="Check ISBN-10" id="isbncheck"/>
+        <p id="isbnvalidity">Check ISBN-10</p>
+      </div>
+      
+      <div class="subcontainer">
+        <h3 class="title">Hamming code</h3>
+        <p>First field: Message (4 bits)<br>Second field: Calculated parity (3 bits)</p>
+        <input size="4" type="text" id="hammingmessage" value="1011"/>
+        <input type="text" id="hammingparity"/>
+        <input type="button" value="Calculate parity" id="hammingcalculate"/><br>
+        <input type="button" value="Correct code" id="hammingcorrect" class="subbutton"/>
+        <p id="correctedcode">Corrected code:</p>
+      </div>
+    </div>
+
+    <script type="application/dart" src="mathtests.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
