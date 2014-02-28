@@ -18,6 +18,8 @@ void main() {
   bHammingCorrect.onClick.listen((e) => correct());
   
   (querySelector("#hammingreset") as InputElement).onClick.listen((e) => cleanup());
+  
+  canvas();
 }
 
 void printresize() {
@@ -165,4 +167,46 @@ String getCorrected(String inp) {
   }
   
   return corrected;
+}
+
+int space = 0;
+int x = 15;
+int y = 15;
+CanvasRenderingContext2D context = (querySelector("#canvas") as CanvasElement).context2D;
+
+void canvas() {
+  context.font = 'normal 15px Verdana';
+  List chain = new List();
+  chain.add("R");
+  chain.add("Bl");
+  chain.add( [ [ "R", "Br", "Bl" ], [ "R", "R", "Bl"] ] );
+  chain.add("Br");
+  chain.add( [ "Bl", "R" ] );
+  chain.add("Bl");
+  drawchain(chain);
+}
+
+drawchain(List chain) {
+  chain.forEach(doElement);
+}
+
+void doElement(var element) {
+  if (element is String) {
+    context.fillText(element, x, y);
+  }
+  else {
+    y += 15;
+    (element as List).forEach(doElement);
+    y -= 15;
+  }
+  
+  x += 15;
+}
+
+void printWithSpace(String text) {
+  String spaces = "";
+  for (int i = 0; i < space; i++) {
+    spaces += " ";
+  }
+  print(spaces + text);
 }
