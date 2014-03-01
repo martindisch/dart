@@ -179,7 +179,7 @@ void canvas() {
   List chain = new List();
   chain.add("R");
   chain.add("Bl");
-  chain.add( [ [ "R", "Br", "Bl" ], [ "R", "R", "Bl"] ] );
+  chain.add( [ "R", "Br", [ "R", "R", "Bl"], "Bl" ] );
   chain.add("Br");
   chain.add( [ "Bl", "R" ] );
   chain.add("Bl");
@@ -206,7 +206,7 @@ void doElement(var element, bool down, int x, int y) {
   }
   else {
     for (int i = 0; i < (element as List).length; i++) {
-        doElement((element as List)[i], down, x, y);
+        doElement((element as List)[i], !down, x, y);
         y += 15;
       }
   }
