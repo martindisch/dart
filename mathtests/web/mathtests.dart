@@ -170,8 +170,8 @@ String getCorrected(String inp) {
 }
 
 int space = 0;
-int x = 15;
-int y = 15;
+int X = 15;
+int Y = 15;
 CanvasRenderingContext2D context = (querySelector("#canvas") as CanvasElement).context2D;
 
 void canvas() {
@@ -187,26 +187,27 @@ void canvas() {
 }
 
 drawchain(List chain) {
-  chain.forEach(doElement);
+  chain.forEach((e) => doElement(e, false, X, Y));
+  for (int i = 0; i < chain.length; i++) {
+    doElement(chain[i], false, X, Y);
+    X += 15;
+  }
 }
 
-void doElement(var element) {
+void doElement(var element, bool down, int x, int y) {
+  if (down) {
+    y += 15;
+  }
+  else {
+    x += 15;
+  }
   if (element is String) {
     context.fillText(element, x, y);
   }
   else {
-    y += 15;
-    (element as List).forEach(doElement);
-    y -= 15;
+    for (int i = 0; i < (element as List).length; i++) {
+        doElement((element as List)[i], down, x, y);
+        y += 15;
+      }
   }
-  
-  x += 15;
-}
-
-void printWithSpace(String text) {
-  String spaces = "";
-  for (int i = 0; i < space; i++) {
-    spaces += " ";
-  }
-  print(spaces + text);
 }
