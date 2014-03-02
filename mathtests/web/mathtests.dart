@@ -1,4 +1,6 @@
 import 'dart:html';
+import 'dart:math';
+import 'dart:async';
 
 void main() {
   window.onResize.listen((e) => printresize());
@@ -18,8 +20,7 @@ void main() {
   bHammingCorrect.onClick.listen((e) => correct());
   
   (querySelector("#hammingreset") as InputElement).onClick.listen((e) => cleanup());
-  
-  canvas();
+  new Timer.periodic(new Duration(milliseconds: 500), (e) => canvas());
 }
 
 void printresize() {
@@ -169,45 +170,37 @@ String getCorrected(String inp) {
   return corrected;
 }
 
-int space = 0;
-int X = 15;
-int Y = 15;
 CanvasRenderingContext2D context = (querySelector("#canvas") as CanvasElement).context2D;
 
 void canvas() {
+  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
   context.font = 'normal 15px Verdana';
+  List<String> colors = [ "Rd", "Bl", "Br" ];
   List chain = new List();
-  chain.add("R");
-  chain.add("Bl");
-  chain.add( [ "R", "Br", [ "R", "R", "Bl"], "Bl" ] );
-  chain.add("Br");
-  chain.add( [ "Bl", "R" ] );
-  chain.add("Bl");
+  List temp = new List();
+  final random = new Random();
+  for (int i = 0; i < 30; i++) {
+    temp = new List();
+    for (int z = -1; z < random.nextInt(28); z++) {
+      temp.add(colors[random.nextInt(colors.length)]);
+    }
+    chain.add(temp);
+  }
   drawchain(chain);
 }
 
 drawchain(List chain) {
-  chain.forEach((e) => doElement(e, false, X, Y));
+  int X = 20;
+  int Y = 20;
   for (int i = 0; i < chain.length; i++) {
-    doElement(chain[i], false, X, Y);
-    X += 15;
+    doElement(chain[i], X, Y);
+    X += 20;
   }
 }
 
-void doElement(var element, bool down, int x, int y) {
-  if (down) {
-    y += 15;
-  }
-  else {
-    x += 15;
-  }
-  if (element is String) {
-    context.fillText(element, x, y);
-  }
-  else {
-    for (int i = 0; i < (element as List).length; i++) {
-        doElement((element as List)[i], !down, x, y);
-        y += 15;
-      }
+void doElement(List element, int x, int y) {
+  for (int i = 0; i < element.length; i++) {
+    context.fillText(element[i].toString(), x, y);
+    y += 20;
   }
 }
